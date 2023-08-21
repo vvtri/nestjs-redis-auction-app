@@ -14,16 +14,18 @@
       5. Views
       6. Highest bid
       7. Ending time <unix>
-4. List most expensive product
-5. List ending soonest product
-6. Search product / Fuzzy / Auto Complete
-7. View our product
-
+4. The first time user view product, increase product's views by one
+5. List most expensive product
+6. List ending soonest product
+7. List most viewed product
+8. History product viewed by user
+9. Search product / Fuzzy / Auto Complete
+10. View our product
 
 ### Design data structure
 
 1. User: Each user has many properties ==> HashSet
 2. User unique: Use `exists` command
 3. Product: Each product has many properties ==> HashSet (consider RedisJSON later)
-4. Most expensive: Use SortedSet 
+4. Most expensive: Use SortedSet
 5. Ending soonest: Use RedisSearch

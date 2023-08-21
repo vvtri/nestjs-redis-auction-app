@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import {
   AuthenticateUser,
   CurrentAuthData,
@@ -12,13 +13,14 @@ import { AuthUserService } from '../services/auth.user.service';
 import { User } from '../types/user.type';
 
 @Controller({ version: '1', path: `${PathType.USER}/auth` })
+@ApiTags('Auth User V1')
 export class AuthUserController {
   constructor(private authUserSer: AuthUserService) {}
 
   @Get('current')
   @AuthenticateUser()
   current(@CurrentAuthData() user: User): User {
-    return user;
+    return new User({ username: user.username });
   }
 
   @Post('sign-up')

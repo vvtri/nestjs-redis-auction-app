@@ -16,7 +16,16 @@ async function bootstrap() {
   });
   app.enableVersioning({ type: VersioningType.URI });
 
-  // app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      skipUndefinedProperties: false,
+      transformOptions: {
+        exposeDefaultValues: true,
+        exposeUnsetFields: true,
+      },
+    }),
+  );
 
   const config = new DocumentBuilder()
     .setTitle('NestJs Redis Auction App')

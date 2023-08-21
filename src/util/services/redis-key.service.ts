@@ -3,7 +3,19 @@ export class RedisKeyService {
     return `user#${username}`;
   }
 
-  itemKey(itemId: string) {
-    return `item#${itemId}`;
+  productKey(productId: string) {
+    return `product#${productId}`;
+  }
+
+  productEndingSoonestKey() {
+    return `product:ending:soonest`;
+  }
+
+  productUniqueViewKey(productId: string) {
+    return `product:unique:view:${productId}`;
+  }
+
+  productViewBoardKey() {
+    return `product:view:board`;
   }
 }

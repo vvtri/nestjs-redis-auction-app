@@ -8,6 +8,7 @@ import { redisConfig } from './common/config/redis.config';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthModule } from './auth/auth.module';
 import { UtilModule } from './util/util.module';
+import { ProductModule } from './products/product.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { UtilModule } from './util/util.module';
 
     UtilModule,
     AuthModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
