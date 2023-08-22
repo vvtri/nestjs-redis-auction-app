@@ -5,12 +5,12 @@ import {
   CurrentAuthData,
 } from '../../../common/decorators/auth.decorator';
 import { PathType } from '../../../common/enums/path-type.enum';
+import { User } from '../../common/types/user.type';
 import {
   SignInUserDtoReq,
   SignUpUserDtoReq,
 } from '../dtos/req/auth.user.dto.req';
 import { AuthUserService } from '../services/auth.user.service';
-import { User } from '../types/user.type';
 
 @Controller({ version: '1', path: `${PathType.USER}/auth` })
 @ApiTags('Auth User V1')

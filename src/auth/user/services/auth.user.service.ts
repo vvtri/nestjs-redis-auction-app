@@ -1,23 +1,20 @@
-import { InjectRedis, RedisService } from '@liaoliaots/nestjs-redis';
 import {
   ConflictException,
   Injectable,
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { Redis } from 'ioredis';
-import { RedisKeyService } from '../../../util/services/redis-key.service';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import { compare, genSalt, hash } from 'bcryptjs';
+import { AppConfig } from '../../../common/config/app.config';
+import { JwtAuthPayload } from '../../../common/types/jwt-payload.type';
+import { UserRepository } from '../../common/repositories/user.repository';
+import { User } from '../../common/types/user.type';
 import {
   SignInUserDtoReq,
   SignUpUserDtoReq,
 } from '../dtos/req/auth.user.dto.req';
-import { UserRepository } from '../repositories/user.repository';
-import { compare, genSalt, hash } from 'bcryptjs';
-import { User } from '../types/user.type';
-import { JwtAuthPayload } from '../../../common/types/jwt-payload.type';
-import { JwtService } from '@nestjs/jwt';
-import { ConfigService } from '@nestjs/config';
-import { AppConfig } from '../../../common/config/app.config';
 import { AuthUserDtoRes } from '../dtos/res/auth.user.dto.res';
 
 @Injectable()
@@ -35,7 +32,7 @@ export class AuthUserService {
 
     if (exists) throw new ConflictException('User existed');
 
-    const salt = await genSalt(); 
+    const salt = await genSalt();
     const encryptedPwd = await hash(password, salt);
 
     const user = await this.userRepo.create({

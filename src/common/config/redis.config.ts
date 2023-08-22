@@ -24,6 +24,19 @@ export const redisConfig: RedisModuleAsyncOptions = {
         host: redisHost,
         port: Number(redisPort),
         password: redisPassword,
+        onClientCreated(client) {
+          client.defineCommand('unLock', {
+            numberOfKeys: 1,
+            lua: `
+              local lockKey = KEYS[1]
+              local token = ARGV[1]
+              
+              if (redis.call("GET", lockKey) == token) then
+                redis.call("DEL", lockKey)
+              end
+            `,
+          });
+        },
       },
     };
 

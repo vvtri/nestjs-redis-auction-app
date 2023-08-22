@@ -18,4 +18,16 @@ export class RedisKeyService {
   productViewBoardKey() {
     return `product:view:board`;
   }
+
+  bidLockKey(productId: string) {
+    return `bid:lock:${productId}`;
+  }
+
+  productBidHistoryKey(productId: string) {
+    return `product:bid:history:${productId}`;
+  }
+
+  productLikeListKey(productId: string) {
+    return `product:like:${productId}`;
+  }
 }

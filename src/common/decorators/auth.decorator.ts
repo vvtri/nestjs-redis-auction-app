@@ -6,7 +6,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { JwtAuthenUserGuard } from '../../auth/user/guards/jwt-authen.user.guard';
+import { JwtAuthenUserGuard } from '../../auth/common/guards/jwt-authen.user.guard';
 
 export const IS_PUBLIC_KEY = Symbol();
 export const Public = () => SetMetadata(IS_PUBLIC_KEY, true);

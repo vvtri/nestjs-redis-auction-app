@@ -1,3 +1,5 @@
+import { PaginationReqDto } from './dtos/pagination.dto';
+
 /**
  * Generate random number in range, inclusive min, exclusive max
  */
@@ -25,4 +27,22 @@ export const chunk = <T>(input: T[], size: number): T[][] => {
       ? [...arr, [item]]
       : [...arr.slice(0, -1), [...arr.slice(-1)[0], item]];
   }, []);
+};
+
+/**
+ * @param time delay time, in miliseconds
+ */
+export const sleep = (time: number) => {
+  return new Promise<void>((res) => {
+    setTimeout(() => {
+      res();
+    }, time);
+  });
+};
+
+export const getOffsetAndCount = ({ limit, page }: PaginationReqDto) => {
+  const offset = (page - 1) * limit;
+  const count = limit;
+
+  return { offset, count };
 };

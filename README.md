@@ -1,3 +1,5 @@
+## Status: Done
+
 ### Auction app
 
 1. Use uuid as id
@@ -14,11 +16,11 @@
       5. Views
       6. Highest bid
       7. Ending time <unix>
-4. The first time user view product, increase product's views by one
-5. List most expensive product
-6. List ending soonest product
-7. List most viewed product
-8. History product viewed by user
+4. The first time user view product, increase product's views by one -- done
+5. List most expensive product -- done
+6. List ending soonest product -- done
+7. List most viewed product -- done
+8. Count product likes -- done
 9. Search product / Fuzzy / Auto Complete
 10. View our product
 

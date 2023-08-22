@@ -1,5 +1,5 @@
 import { NonFunctionProperties } from '../../../../common/types/util.type';
-import { User } from '../../types/user.type';
+import { User } from '../../../common/types/user.type';
 
 export class AuthUserDtoRes {
   user: User;
